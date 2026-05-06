@@ -2,9 +2,9 @@
 Temps total: 150 heures
 
 ## Étape 1: phase de recherche (60h)
-    Étude initiale du domaine : 6h + 2h
+    Étude initiale du domaine : 6h + 2h (complété)
     Peaufinage et confirmation finale de la question de recherche (calendrier plus détaillé) : 2h (complété)
-    Préparation du site web du projet : 4h
+    Préparation du site web du projet : 4h (complété)
     Étude approfondie du domaine : 40h
     Synthèse de l'étude : 8h -2h
 
@@ -26,6 +26,7 @@ Temps total: 150 heures
 
     Rédaction du rapport : 7h
     Préparation présentation : 3h
+    
 ---
 
 # Question de recherche: 
@@ -59,11 +60,11 @@ J'ai lu des sites Wikipédia à propos de la redondance(info théo), MDL, comple
 * [Autoencodeurs](https://en.wikipedia.org/wiki/Autoencoder): Inspiration centrale de ma recherche, offre une connexion avec MDL
 * [Théorie d'information algorithmique](https://en.wikipedia.org/wiki/Algorithmic_information_theory): Domaine d'étude centrale, ce serait intéressant de trouver plus de ressources utiles (comme des notes de cours ift 6161?????)
 
-De ma lecture secondaire (liens ci-dessous), je n'ai pas trouvé d'autres articles wikipédia qui m'ont ouvert d'autres pistes. **Il me reste des textes à lire**
+De ma lecture secondaire (liens ci-dessous), je n'ai pas trouvé d'autres articles wikipédia qui m'ont ouvert d'autres pistes.
 * [Théorie de l'information (bases)](https://en.wikipedia.org/wiki/Information_theory): Entropie, pas trop d'info nouvellement pertinentes
-* [Shannon (source coding theorem)](https://en.wikipedia.org/wiki/Shannon%27s_source_coding_theorem): **TODO À LIRE**
+* [Shannon (source coding theorem)](https://en.wikipedia.org/wiki/Shannon%27s_source_coding_theorem): Prends seulement en compte la fréquence des régularités du code (simolification de kolmogorov)
 * [Fonction Hartley](https://en.wikipedia.org/wiki/Hartley_function): Extension de la théorie d'information, propriétés intéressantes mais pas de piste pertinente
-* [Codage d'entropie](https://en.wikipedia.org/wiki/Entropy_coding): **TODO À LIRE**
+* [Codage d'entropie](https://en.wikipedia.org/wiki/Entropy_coding): Introduit les techniques de compression par régularisation
 * [Correlation totale](https://en.wikipedia.org/wiki/Total_correlation): Extension de la théorie de l'information, implique Dkl. pas de piste intéressante
-* [Aprentissage Ockham](https://en.wikipedia.org/wiki/Occam_learning): **TODO À LIRE**
-* [PAC](https://en.wikipedia.org/wiki/Probably_approximately_correct_learning): **TODO À LIRE**
+* [Apprentissage Ockham](https://en.wikipedia.org/wiki/Occam_learning): Presque équivalent à l'apprentissage PAC, formalise la favorisation des explications courtes des données.
+* [Apprentissage PAC](https://en.wikipedia.org/wiki/Probably_approximately_correct_learning): Apprentissage algorithmique qui essaie de généraliser en dessous d'une erreur donnée avec une certitude donnée. Piste potentiellement intéressante, mais se trouve hors du contexte 
