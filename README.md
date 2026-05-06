@@ -43,6 +43,7 @@ Le concept d'un code aléatoire défini par la complexité de kolmogorov introdu
     Commencer avec un apprentissage supervisé sur des modèles linéaires, élaborer les techniques sur des modèles non-linéares (idéalement les cas MLP comme un autoencodeur)
     SOIT Explorer ensuite les cas d'apprentissage non-supervisé
     OU SOIT Explorer les cas de compression de données de perte acceptable (potentiellement la direction primaire étant donné les limites des algorithmes de compression sans perte sur des données bruitées)
+
 ## Bac à sable d'idées
     - Création d'un ACP supervisé (préservation de plus grande variation par rapport au changement des données d'entrées et l'effet sur la sortie), élaboration à un auto-encodeur
     - compression par classe -> compression de chaque données de chaque classe (dans un arbre), apprentissage par arbre. hypothèse : redondance statistique dans les données (interprétée comme chaque classe a un langage) compressé offre une meilleure
