@@ -49,6 +49,9 @@ Le concept d'un code aléatoire défini par la complexité de kolmogorov introdu
     - Création d'un ACP supervisé (préservation de plus grande variation par rapport au changement des données d'entrées et l'effet sur la sortie), élaboration à un auto-encodeur
     - compression par classe -> compression de chaque données de chaque classe (dans un arbre), apprentissage par arbre. hypothèse : redondance statistique dans les données (interprétée comme chaque classe a un langage) compressé offre une meilleure
     - hypothèse: la compresssion des redondances dans les entrées offrent une meilleure valeur des données
+    - avoir un algorithme de compression à perte qui mesure le taux optimal de perte, qui apprend la fonction du bruit, et qui permet une compression utile en fonction des deux derniers (le problème sera comment on implémente cette fonction de compression dans le contexte d'apprentissage automatique)
+    - Le plus grand problème à survenir est de trouver l'implémentation idéale d'un algorithme de compression dans le contexte d'apprentissage automatique (l'extraction utile des données comprimées). si on regarde à l'idée de compression par classe, on a une application spécifique mais j'en suis convaincu qu'il existe une meilleure implémentation. Sûrement ce serait un algorithme hybride des algorithmes d'apprentissage automatique et de compression pûre.
+    - Je veux un algorithme d'apprentissage de distribution qui commence comme une distribution uniforme et apprend très peu d'information (surprise de shannon) à l'ajout d'information (de nouvelles données). L'ajout d'information s'augmenterait graduellement à l'ajout des données. Si les données suivent tous la même distribution, l'ajout d'information aura un plateau pour indiquer que la distribution est confortablement apprise (sûrement contrôlé par un hyperparamètre de perte, est-ce que cet hyperparamètre peut-être appris par un algorithme décrite par une idée précédente?).
 
 ## Commentaires sur l'étude initiale
 J'ai lu des sites Wikipédia à propos de la redondance(info théo), MDL, complexité Kolmogorov, compression des données, auto-encodeurs, théorie algorithmique de l'information. Je retiens une notion centrale qui est la complexité de Kolmogorov, et son travail avec Chaitin, Solomonoff. Je trouve que cette piste me semble être digne d'une étude approfondie. De multiples articles décrivent les limites de la compression de données (ex: notion aléatoire Kolmogorov, redondance, etc... ). Avec la connexion entre la compression des données et l'apprentissage automatique, je vois une piste à explorer sur la limite des méthodes d'apprentissage automatique théorique.
@@ -68,3 +71,13 @@ De ma lecture secondaire (liens ci-dessous), je n'ai pas trouvé d'autres articl
 * [Correlation totale](https://en.wikipedia.org/wiki/Total_correlation): Extension de la théorie de l'information, implique Dkl. pas de piste intéressante
 * [Apprentissage Ockham](https://en.wikipedia.org/wiki/Occam_learning): Presque équivalent à l'apprentissage PAC, formalise la favorisation des explications courtes des données.
 * [Apprentissage PAC](https://en.wikipedia.org/wiki/Probably_approximately_correct_learning): Apprentissage algorithmique qui essaie de généraliser en dessous d'une erreur donnée avec une certitude donnée. Piste potentiellement intéressante, mais se trouve hors du contexte 
+
+
+
+## Commentaires sur l'étude approfondie
+#### MDL (TODO)
+#### Notes de cours (TODO)
+#### [“Low-Resource” Text Classification: A Parameter-Free Classification Method with Compressors](https://aclanthology.org/2023.findings-acl.426.pdf)
+    
+#### [Dimensionality Reduction: A Comparative Review](https://lvdmaaten.github.io/publications/papers/TR_Dimensionality_Reduction_Review_2009.pdf)
+#### [UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction](https://arxiv.org/pdf/1802.03426)
