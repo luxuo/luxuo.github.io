@@ -5,7 +5,7 @@ Temps total: 150 heures
     Étude initiale du domaine : 6h + 2h (complété)
     Peaufinage et confirmation finale de la question de recherche (calendrier plus détaillé) : 2h (complété)
     Préparation du site web du projet : 4h (complété)
-    Étude approfondie du domaine : 40h
+    Étude approfondie du domaine : 40h (26h fait)
     Synthèse de l'étude : 8h -2h
 
 
@@ -75,9 +75,20 @@ De ma lecture secondaire (liens ci-dessous), je n'ai pas trouvé d'autres articl
 
 
 ## Commentaires sur l'étude approfondie
-#### MDL (TODO)
-#### Notes de cours (TODO)
+#### MDL (TODO à écrire à propos)
+#### Notes de cours IFT 6161 (TODO à écrire à propos)
 #### [“Low-Resource” Text Classification: A Parameter-Free Classification Method with Compressors](https://aclanthology.org/2023.findings-acl.426.pdf)
-    
+    utilise un algorithme non-paramétré (une variante de k-ppv), fonction de distance NCD (normalised compression distance).
+    Algo: pour x^ à prédire -> pour chaque (k plus proches) x_i concatener avec x^ pour x_ix^, comprimer x_i pour Cx_i et x_ix^ pour Cx_ix^, calculer la distance NCD et appliquer k-ppv.
+    J'aimerai modifier cet algorithme pour que la compression des données soit effectuée par rapport à toute l'ensemble de données d'une classe des données d'entrainement. L'argument est que des parties individuelles de chaque x_i peuvent individuellement être considérée comme aléatoire dans le sens kolmogorov, mais ensemble, contiennent de l'information comprimable plus efficacement. On peut aussi rajouter un élément potentiellement normalisateur de la compression de toutes les données ensemble peu importe la classe. Avec ça, je pourrai essayer de créer une équation qui modélise (un gain d'information?) la séparation du langage de la classe et le langage des données qui permet aux entrées d'avoir des prédictions indépêndantes du langage des données (correspond plus au langage de la classe). L'algorithme ne sera plus capable de faire de la régression du sens de k-ppv (puisqu'il ne sera plus k-ppv).
+    Les méthodes non-paramétrées n'introduisent pas un biais inductif lors de l'entraînement. Le compresseur est indépendant du type des données par nature. Le modèle du papier est universel en termes de distributions de données. Cependant, une compression sans perte exige naturellement des données non-bruitées pour bien fonctionner.
+    Les résultats avec un algorithme de compression plus performant (bz2) a été trouvé d'avoir une pire performance comparé à gzip (compression moins performante). Les auteurs soupçonnent que c'est dû à la permutation de charactères par bz2 qui nuit à la performance. 
 #### [Dimensionality Reduction: A Comparative Review](https://lvdmaaten.github.io/publications/papers/TR_Dimensionality_Reduction_Review_2009.pdf)
+TODO Peut-être à ne pas lire...
 #### [UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction](https://arxiv.org/pdf/1802.03426)
+TODO Peut-être à ne pas lire...
+#### [The Similarity Metric](https://arxiv.org/pdf/cs/0111054)
+    Mesure la similarité de deux séquences (IMPORTANT), utilise le principe de la complexité de kolmogorov
+    
+#### [Few-Shot Non-Parametric Learning with Deep Latent Variable Model](https://arxiv.org/pdf/2206.11573)
+TODO à absolument lire
