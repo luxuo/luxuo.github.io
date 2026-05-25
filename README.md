@@ -84,11 +84,14 @@ De ma lecture secondaire (liens ci-dessous), je n'ai pas trouvé d'autres articl
     Les méthodes non-paramétrées n'introduisent pas un biais inductif lors de l'entraînement. Le compresseur est indépendant du type des données par nature. Le modèle du papier est universel en termes de distributions de données. Cependant, une compression sans perte exige naturellement des données non-bruitées pour bien fonctionner.
     Les résultats avec un algorithme de compression plus performant (bz2) a été trouvé d'avoir une pire performance comparé à gzip (compression moins performante). Les auteurs soupçonnent que c'est dû à la permutation de charactères par bz2 qui nuit à la performance. 
 #### [Dimensionality Reduction: A Comparative Review](https://lvdmaaten.github.io/publications/papers/TR_Dimensionality_Reduction_Review_2009.pdf)
-TODO Peut-être à ne pas lire...
+TODO Peut-être à ne pas lire... Si ma piste courante (utilisation pure des algorithmes de compression) se mène nulle part, j'y visterai ce papier...
 #### [UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction](https://arxiv.org/pdf/1802.03426)
-TODO Peut-être à ne pas lire...
+TODO Peut-être à ne pas lire... Une méthode très intéressante à étudier, mais je ne vois plus la pertinence d'y lire.
 #### [The Similarity Metric](https://arxiv.org/pdf/cs/0111054)
     Mesure la similarité de deux séquences (IMPORTANT), utilise le principe de la complexité de kolmogorov
-    
+    Développe la théorie d'une distance d'information normalisée, et propose une formule de distance d'information qui utilise un algorithme de compression concrèt (au lieu de la complexité kolmogorov).
+    Le papier démontre l'application de la notion de distance sur la création d'arbres de similarité des langues et des séquences d'ADN, et conclut l'utilisabilité dans ces cas.
+    Je tire une notion de séquence que je vois être très importante sur l'application de la notion de distance. Par exemple, le papier utilise l'algorithme de compression lempel-ziv (gzip) pour créer un arbre de langues. L'algorithme se fie sur les récurrences de séquences binaires. La séquence d'une image est totalement différente de la séquence du langage naturel. Serait-it possible de soit trouver un algorithme ayant une différente interprétation d'une séquence, altérer la notion de séquence dans un algorithme de compression exitant, ou de créer un algorithme de compression avec un interprétation plus générale (ou même universel, ou est-ce essentiellement trouver la complexité de kolmogorov pure) ?
+    Utilise ce papier comme référence théorique pour les modifications potentielles de l'algorithme modifié proposé (limitation potentielles théoriques)
 #### [Few-Shot Non-Parametric Learning with Deep Latent Variable Model](https://arxiv.org/pdf/2206.11573)
 TODO à absolument lire
