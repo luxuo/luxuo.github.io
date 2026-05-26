@@ -5,7 +5,7 @@ Temps total: 150 heures
     Étude initiale du domaine : 6h + 2h (complété)
     Peaufinage et confirmation finale de la question de recherche (calendrier plus détaillé) : 2h (complété)
     Préparation du site web du projet : 4h (complété)
-    Étude approfondie du domaine : 40h (26h fait)
+    Étude approfondie du domaine : 40h (35h fait)
     Synthèse de l'étude : 8h -2h
 
 
@@ -95,3 +95,9 @@ TODO Peut-être à ne pas lire... Une méthode très intéressante à étudier, 
     Utilise ce papier comme référence théorique pour les modifications potentielles de l'algorithme modifié proposé (limitation potentielles théoriques)
 #### [Few-Shot Non-Parametric Learning with Deep Latent Variable Model](https://arxiv.org/pdf/2206.11573)
 TODO à absolument lire
+#### [The Limits of AI Explainability: An Algorithmic Information Theory Approach](https://arxiv.org/pdf/2504.20676)
+    Side quest de lecture. Lecture très brève. pas tant pertinent
+#### [On the symmetry of algorithmic information](https://www.researchgate.net/publication/284090758_On_the_symmetry_of_algorithmic_information)
+    Rien compris...
+#### [Normalized Forms for Two Common Metrics](http://pnylab.com/papers/nmet/nmet.pdf)
+    Espaces métrique. Étudie l'idée d'une métrique normalisée. La distance absolue prend seulement en compte le delta des éléments. Par exemple d(0.1,0.2)=d(1000.1,1000.2) dans l'espace euclédien (l2). Le papier veut prendre en compte les distances relatives. L'auteur développe 2 normalisations de métriques 
