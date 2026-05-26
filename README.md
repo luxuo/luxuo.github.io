@@ -1,4 +1,5 @@
-# Horaire de travail
+# [Github du projet](https://github.com/luxuo/luxuo.github.io)
+## Horaire de travail
 Temps total: 150 heures
 
 ## Étape 1: phase de recherche (60h)
