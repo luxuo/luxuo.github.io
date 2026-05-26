@@ -93,11 +93,13 @@ TODO Peut-être à ne pas lire... Une méthode très intéressante à étudier, 
     Le papier démontre l'application de la notion de distance sur la création d'arbres de similarité des langues et des séquences d'ADN, et conclut l'utilisabilité dans ces cas.
     Je tire une notion de séquence que je vois être très importante sur l'application de la notion de distance. Par exemple, le papier utilise l'algorithme de compression lempel-ziv (gzip) pour créer un arbre de langues. L'algorithme se fie sur les récurrences de séquences binaires. La séquence d'une image est totalement différente de la séquence du langage naturel. Serait-it possible de soit trouver un algorithme ayant une différente interprétation d'une séquence, altérer la notion de séquence dans un algorithme de compression exitant, ou de créer un algorithme de compression avec un interprétation plus générale (ou même universel, ou est-ce essentiellement trouver la complexité de kolmogorov pure) ?
     Utilise ce papier comme référence théorique pour les modifications potentielles de l'algorithme modifié proposé (limitation potentielles théoriques)
-#### [Few-Shot Non-Parametric Learning with Deep Latent Variable Model](https://arxiv.org/pdf/2206.11573)
-TODO à absolument lire
 #### [The Limits of AI Explainability: An Algorithmic Information Theory Approach](https://arxiv.org/pdf/2504.20676)
     Side quest de lecture. Lecture très brève. pas tant pertinent
 #### [On the symmetry of algorithmic information](https://www.researchgate.net/publication/284090758_On_the_symmetry_of_algorithmic_information)
     Rien compris...
 #### [Normalized Forms for Two Common Metrics](http://pnylab.com/papers/nmet/nmet.pdf)
     Espaces métrique. Étudie l'idée d'une métrique normalisée. La distance absolue prend seulement en compte le delta des éléments. Par exemple d(0.1,0.2)=d(1000.1,1000.2) dans l'espace euclédien (l2). Le papier veut prendre en compte les distances relatives. L'auteur développe 2 normalisations de métriques 
+#### [Few-Shot Non-Parametric Learning with Deep Latent Variable Model](https://arxiv.org/pdf/2206.11573)
+TODO à absolument lire
+#### ­[Clustering by Compression](https://arxiv.org/pdf/cs/0312044)
+TODO à absolument lire
