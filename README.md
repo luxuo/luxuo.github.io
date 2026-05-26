@@ -77,17 +77,22 @@ De ma lecture secondaire (liens ci-dessous), je n'ai pas trouvé d'autres articl
 
 ## Commentaires sur l'étude approfondie
 #### MDL (TODO à écrire à propos)
+
 #### Notes de cours IFT 6161 (TODO à écrire à propos)
+
 #### [“Low-Resource” Text Classification: A Parameter-Free Classification Method with Compressors](https://aclanthology.org/2023.findings-acl.426.pdf)
     utilise un algorithme non-paramétré (une variante de k-ppv), fonction de distance NCD (normalised compression distance).
     Algo: pour x^ à prédire -> pour chaque (k plus proches) x_i concatener avec x^ pour x_ix^, comprimer x_i pour Cx_i et x_ix^ pour Cx_ix^, calculer la distance NCD et appliquer k-ppv.
     J'aimerai modifier cet algorithme pour que la compression des données soit effectuée par rapport à toute l'ensemble de données d'une classe des données d'entrainement. L'argument est que des parties individuelles de chaque x_i peuvent individuellement être considérée comme aléatoire dans le sens kolmogorov, mais ensemble, contiennent de l'information comprimable plus efficacement. On peut aussi rajouter un élément potentiellement normalisateur de la compression de toutes les données ensemble peu importe la classe. Avec ça, je pourrai essayer de créer une équation qui modélise (un gain d'information?) la séparation du langage de la classe et le langage des données qui permet aux entrées d'avoir des prédictions indépêndantes du langage des données (correspond plus au langage de la classe). L'algorithme ne sera plus capable de faire de la régression du sens de k-ppv (puisqu'il ne sera plus k-ppv).
     Les méthodes non-paramétrées n'introduisent pas un biais inductif lors de l'entraînement. Le compresseur est indépendant du type des données par nature. Le modèle du papier est universel en termes de distributions de données. Cependant, une compression sans perte exige naturellement des données non-bruitées pour bien fonctionner.
     Les résultats avec un algorithme de compression plus performant (bz2) a été trouvé d'avoir une pire performance comparé à gzip (compression moins performante). Les auteurs soupçonnent que c'est dû à la permutation de charactères par bz2 qui nuit à la performance. 
+    
 #### [Dimensionality Reduction: A Comparative Review](https://lvdmaaten.github.io/publications/papers/TR_Dimensionality_Reduction_Review_2009.pdf)
 TODO Peut-être à ne pas lire... Si ma piste courante (utilisation pure des algorithmes de compression) se mène nulle part, j'y visterai ce papier...
+
 #### [UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction](https://arxiv.org/pdf/1802.03426)
 TODO Peut-être à ne pas lire... Une méthode très intéressante à étudier, mais je ne vois plus la pertinence d'y lire.
+
 #### [The Similarity Metric](https://arxiv.org/pdf/cs/0111054)
     Mesure la similarité de deux séquences (IMPORTANT), utilise le principe de la complexité de kolmogorov
     Développe la théorie d'une distance d'information normalisée, et propose une formule de distance d'information qui utilise un algorithme de compression concrèt (au lieu de la complexité kolmogorov).
@@ -96,11 +101,15 @@ TODO Peut-être à ne pas lire... Une méthode très intéressante à étudier, 
     Utilise ce papier comme référence théorique pour les modifications potentielles de l'algorithme modifié proposé (limitation potentielles théoriques)
 #### [The Limits of AI Explainability: An Algorithmic Information Theory Approach](https://arxiv.org/pdf/2504.20676)
     Side quest de lecture. Lecture très brève. pas tant pertinent
+    
 #### [On the symmetry of algorithmic information](https://www.researchgate.net/publication/284090758_On_the_symmetry_of_algorithmic_information)
     Rien compris...
+    
 #### [Normalized Forms for Two Common Metrics](http://pnylab.com/papers/nmet/nmet.pdf)
     Espaces métrique. Étudie l'idée d'une métrique normalisée. La distance absolue prend seulement en compte le delta des éléments. Par exemple d(0.1,0.2)=d(1000.1,1000.2) dans l'espace euclédien (l2). Le papier veut prendre en compte les distances relatives. L'auteur développe 2 normalisations de métriques 
+    
 #### [Few-Shot Non-Parametric Learning with Deep Latent Variable Model](https://arxiv.org/pdf/2206.11573)
 TODO à absolument lire
+
 #### ­[Clustering by Compression](https://arxiv.org/pdf/cs/0312044)
 TODO à absolument lire
