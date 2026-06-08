@@ -53,7 +53,9 @@ Le concept d'un code aléatoire défini par la complexité de kolmogorov introdu
     - avoir un algorithme de compression à perte qui mesure le taux optimal de perte, qui apprend la fonction du bruit, et qui permet une compression utile en fonction des deux derniers (le problème sera comment on implémente cette fonction de compression dans le contexte d'apprentissage automatique)
     - Le plus grand problème à survenir est de trouver l'implémentation idéale d'un algorithme de compression dans le contexte d'apprentissage automatique (l'extraction utile des données comprimées). si on regarde à l'idée de compression par classe, on a une application spécifique mais j'en suis convaincu qu'il existe une meilleure implémentation. Sûrement ce serait un algorithme hybride des algorithmes d'apprentissage automatique et de compression pûre.
     - Je veux un algorithme d'apprentissage de distribution qui commence comme une distribution uniforme et apprend très peu d'information (surprise de shannon) à l'ajout d'information (de nouvelles données). L'ajout d'information s'augmenterait graduellement à l'ajout des données. Si les données suivent tous la même distribution, l'ajout d'information aura un plateau pour indiquer que la distribution est confortablement apprise (sûrement contrôlé par un hyperparamètre de perte, est-ce que cet hyperparamètre peut-être appris par un algorithme décrite par une idée précédente?).
-
+    - dictionnaire d'un algorithme de compression peut-il être similaire au transformer (un dictionnaire souple)?
+    - J'ai la notion intuitive que K(x) est purement non-biaisé. Dans le contexte de l'apprentissage automatique, ceci ferait que K(x) est pûrement vulnérable à la variance. Ça fait du sens, K(x) est obligé à compresser le bruit intrinsèque dans les données aussi. La question suit: serait-il possible de concevoir un aspect de K(x) avec perte, ceci serait une introduction de biais dans la compression qui pourrait aussi avoir un hyperparamêtre qui gêre directement le compromis biais-variance. En utilisant K(x) directement, ce concept demeura dans le monde théorique; mais ça pourrait être quand même une piste intéressante à explorer (probablement très dur/compliquer à explorer).
+    
 ## Commentaires sur l'étude initiale
 J'ai lu des sites Wikipédia à propos de la redondance(info théo), MDL, complexité Kolmogorov, compression des données, auto-encodeurs, théorie algorithmique de l'information. Je retiens une notion centrale qui est la complexité de Kolmogorov, et son travail avec Chaitin, Solomonoff. Je trouve que cette piste me semble être digne d'une étude approfondie. De multiples articles décrivent les limites de la compression de données (ex: notion aléatoire Kolmogorov, redondance, etc... ). Avec la connexion entre la compression des données et l'apprentissage automatique, je vois une piste à explorer sur la limite des méthodes d'apprentissage automatique théorique.
 * [Bitmaps](https://en.wikipedia.org/wiki/Bitmap_index):  Cool de savoir qu'il existe une méthode d'opérer sur des données comprimées mais ne semble pas trop pertinent à ma recherche
@@ -103,13 +105,26 @@ TODO Peut-être à ne pas lire... Une méthode très intéressante à étudier, 
     Side quest de lecture. Lecture très brève. pas tant pertinent
     
 #### [On the symmetry of algorithmic information](https://www.researchgate.net/publication/284090758_On_the_symmetry_of_algorithmic_information)
-    Rien compris...
+    Rien compris... peut-être à relire
     
 #### [Normalized Forms for Two Common Metrics](http://pnylab.com/papers/nmet/nmet.pdf)
     Espaces métrique. Étudie l'idée d'une métrique normalisée. La distance absolue prend seulement en compte le delta des éléments. Par exemple d(0.1,0.2)=d(1000.1,1000.2) dans l'espace euclédien (l2). Le papier veut prendre en compte les distances relatives. L'auteur développe 2 normalisations de métriques 
     
 #### [Few-Shot Non-Parametric Learning with Deep Latent Variable Model](https://arxiv.org/pdf/2206.11573)
-TODO à absolument lire
+    Introduit 3 formules d'approximations de NID: NCD, CDM, et CLM. I; n'y a pas de grosse différence dans la performance des différentes formules d'approximation, mais plutôt par les différents types de compressesurs. Le compresseur le plus efficace était BB-ANS. L'algorithme de compression avec variables latentes présenté applique ANS sur un autoencodeur variationnel entrainé pour recevoir un compresseur, qui ensuite fait k-ppv avec une métrique de distance normalisée (dans ce cas NCD).
 
 #### ­[Clustering by Compression](https://arxiv.org/pdf/cs/0312044)
-TODO à absolument lire
+    Utilise NCD comme métrique normalisée (avec précision pratique de e<0.1). Développe les propriétés du NCD (quasi universalité, métrique normalisée).
+    NCD(x,y) = 0 -> x = y
+    NCD(x,y) = 1 -> x très différent de y d'u n point de vue du compresseur
+    Identifie les propriétés d'un comrpresseur normal (compatible pour le NCD).
+    Fait du clustering de données sur une matrice de distance (NCD). Utilise la méthode de quartet.
+    Expérimente avec des gênes, textes, fichiers de musique, photos et conclut que la méthode a une robustesse remarquable à travers de divers sujets d'applications.
+
+#### [Nonapproximability of the normalized information distance](https://homepages.cwi.nl/~paulv/papers/nid.pdf)
+    Définit: NID = E(x,y)/max{K(x),K(y)}
+    Prouve que NID n'est ni lower semicomputable, ni upper semi computable
+#### [How Incomputable Is Kolmogorov Complexity?](https://homepages.cwi.nl/~paulv/papers/incomp.pdf)
+    Article d'introduction à la complexité de kolmogorov, prouve K(x) incalculable (on le sait déjà), fait référence à un autre article qui approxime la complexité de kolmogorov avec des listes quadratiques (à lire cet article).
+#### [A Brief on Short Descriptions](https://dl.acm.org/doi/epdf/10.1145/2902945.2902957)
+à lire svp....
