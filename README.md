@@ -2,12 +2,12 @@
 ## Horaire de travail
 Temps total: 150 heures
 
-## Étape 1: phase de recherche (60h)
+## Étape 1: phase de recherche (60h) complété
     Étude initiale du domaine : 6h + 2h (complété)
     Peaufinage et confirmation finale de la question de recherche (calendrier plus détaillé) : 2h (complété)
     Préparation du site web du projet : 4h (complété)
-    Étude approfondie du domaine : 40h (35h fait)
-    Synthèse de l'étude : 8h -2h
+    Étude approfondie du domaine : 40h + 8h (complété)
+    Temps total accordé: 68h
 
 
 ## Étape 2: application des connaissances/ test d'hypothèses (60h)
