@@ -6,8 +6,8 @@ Temps total: 150 heures
     Étude initiale du domaine : 6h + 2h (complété)
     Peaufinage et confirmation finale de la question de recherche (calendrier plus détaillé) : 2h (complété)
     Préparation du site web du projet : 4h (complété)
-    Étude approfondie du domaine : 40h + 8h (complété)
-    Temps total accordé: 68h
+    Étude approfondie du domaine : 40h + 4h (complété)
+    Temps total accordé: 64h
 
 
 ## Étape 2: application des connaissances/ test d'hypothèses (60h)
