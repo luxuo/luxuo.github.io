@@ -128,3 +128,10 @@ TODO Peut-être à ne pas lire... Une méthode très intéressante à étudier, 
     Article d'introduction à la complexité de kolmogorov, prouve K(x) incalculable (on le sait déjà), fait référence à un autre article qui approxime la complexité de kolmogorov avec des listes quadratiques (à lire cet article).
 #### [A Brief on Short Descriptions](https://dl.acm.org/doi/epdf/10.1145/2902945.2902957)
 à lire svp....
+
+
+## Application des hypothèses
+
+### Idées à développer
+* Notion de séquence
+* Développement de "Preuves": Essayer de prouver qu'enlever le plus gros "carré" d'une séquence est optimal pour la compression, prouver que le carré est optimal 
