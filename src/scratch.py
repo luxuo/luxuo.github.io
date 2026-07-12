@@ -24,14 +24,18 @@ def max_key_log(_, dict):
             max_key = key
     return max_key
 
-def max_key_log_freq(_, dict):
-    max = -1
-    max_key = ''
+def min_key_info(str, dict): #  minimum length encoding
+    min = 100000000000 # just needs to be exceeded
+    min_key = ''
     for key in dict.keys():
-        if math.log(dict[key]) * math.log(len(key)) > max:
-            max = dict[key] * math.log(len(key))
-            max_key = key
-    return max_key
+        # information encoding + length of key
+        # bits required to encode all occurrences + length of key
+        score = -math.log2(p(str,key,dict)) * dict[key] + math.log2(len(key))
+        if score < min:
+            min = score
+            min_key = key
+    return min_key
+
 
 def max_key_sqrt(_, dict):
     max = -1
@@ -130,17 +134,17 @@ def calculate_key_entropy(str, keys, replace_char='*'):
         occurrences.append(count)
 
     # return entropy of system
-    return sum([-math.log2(p) * p for p in [x / sum(occurrences) for x in occurrences]])
+    return sum([-math.log2(p) * p for p in [x / sum(occurrences) for x in occurrences if x > 0]])
 
 str = 'tobeornottobeortobeornot'#'1111111111101111111'
-str = 'hello mellow fellow how is yellow '
-str = 'what is love baby dont hurt me dont hurt me no more'
-str = 'not' * 8
-str = 'what\'s up boys! today we will be shooting clay discs'
-str = 'dcode decodes lzw'
-with open('/home/pingu/Documents/ift4055/luxuo.github.io/src/english.txt', 'r') as f:
-    str = f.read()
-key_functions = [max_key_log, max_key_sqrt, huffman_key, max_key_log_freq]
+#str = 'hello mellow fellow how is yellow '
+#str = 'what is love baby dont hurt me dont hurt me no more'
+#str = 'not' * 8
+#str = 'what\'s up boys! today we will be shooting clay discs'
+str = 'dcode decodes lzw recodes code lz to code to code to decode'
+#with open('/home/pingu/Documents/ift4055/luxuo.github.io/src/english.txt', 'r') as f:
+#    str = f.read()
+key_functions = [max_key_log, max_key_sqrt, huffman_key, min_key_info]
 for func in key_functions:
     tree = impasse(str, func)
     print(tree)
