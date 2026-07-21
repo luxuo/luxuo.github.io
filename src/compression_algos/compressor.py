@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 class Compressor(ABC):
     @abstractmethod
-    def C(self, str):
+    def C(self, str) -> str: 
         pass
 
     @abstractmethod
-    def D(self, str):
+    def D(self, str) -> str:
         pass

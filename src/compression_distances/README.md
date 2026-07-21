@@ -1,5 +1,5 @@
 # TODO
 Créer/trouver d'autres distances
-- `distance 1`
-- `distance 2`
-- `distance 3`
+- `cdm.py` vérifier que c'est la bonne source
+- `clm.py` trouver la bonne source à citer
+- `custom distance.py`
