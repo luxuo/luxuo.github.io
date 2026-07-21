@@ -4,6 +4,9 @@ import math
 def p(str, key, dict):
     return (len(key) * dict[key])/float(len(str))
 
+def p_key(str, key, dict):
+    rep = str.replace(key,'*')
+    return dict[key]/len(rep)
 
 # find key that covers most area in the sequence
 def max_key(_, dict):
@@ -25,16 +28,17 @@ def max_key_log(_, dict):
     return max_key
 
 def min_key_info(str, dict): #  minimum length encoding
-    min = 100000000000 # just needs to be exceeded
+    min = float('-inf') # just needs to be exceeded
     min_key = ''
     for key in dict.keys():
         # information encoding + length of key
         # bits required to encode all occurrences + length of key (in bits)
-        probability = p(str,key,dict)
+        probability = p_key(str,key,dict)
         information = -math.log2(probability)
         information = 1 if information == 0 else information
-        score =  information / probability + math.log2(len(key))
-        if score < min:
+        score =  information / probability + math.log2(len(key) * 8)
+        #score = dict[key] / (information + len(key))
+        if score > min:
             min = score
             min_key = key
     return min_key
@@ -139,15 +143,13 @@ def calculate_key_entropy(str, keys, replace_char='*'):
     # return entropy of system
     return sum([-math.log2(p) * p for p in [x / sum(occurrences) for x in occurrences if x > 0]])
 
-str = 'tobeornottobeortobeornot'#'1111111111101111111'
+str = 'tobeornottobeortobeornot'
 #str = 'hello mellow fellow how is yellow '
 #str = 'what is love baby dont hurt me dont hurt me no more'
 #str = 'not' * 8
 #str = 'what\'s up boys! today we will be shooting clay discs'
 #str = 'dcode decodes lzw recodes code lz to code to code to decode'
-print(len(str))
-print(28.0/59, -math.log2(28.0/59.0) / (28.0/59) + math.log2(4))
-print(3.0/59, -math.log2(3.0/59.0) / (3.0/59.0) + math.log2(3))
+str = '111111111110111111'
 #with open('/home/pingu/Documents/ift4055/luxuo.github.io/src/english.txt', 'r') as f:
 #    str = f.read()
 key_functions = [max_key_log, max_key_sqrt, huffman_key, min_key_info]
