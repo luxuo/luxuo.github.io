@@ -1,7 +1,7 @@
 from compression_algos.compressor import Compressor
 from metric import Metric
 
-# Compression-based dissimilarity measurement https://www.researchgate.net/publication/3085076_Shared_Information_and_Program_Plagiarism_Detection TODO check si c la bonne source
+# Compression-based dissimilarity measurement citation indirecte https://arxiv.org/pdf/2206.11573
 class CDM(Metric):
     def dist(self, C: Compressor, x: str, y: str) -> float:
         cx = len(C.C(x))
