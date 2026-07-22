@@ -1,5 +1,11 @@
+
+
 organisation des fichiers du projet concret
 
 commence l'hypothèse d'une nouvelle méthode de compression: 
  c'est un type de merge par entropie. les détails sont à paufiner,
- mais le gros est de combiner deux charactères avec le plus petit entropie
+ mais le gros est de combiner deux charactères avec le plus petit entropie.
+ essentiellement, le but c'est de combiner des charactères qui apparaissent souvent 
+ ensemble pour former des nouveaux 'charactères' qui ont l'air d'être iid
+
+ travail sur l'implémentation des algorithmes de compression classiques
