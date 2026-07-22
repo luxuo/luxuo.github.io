@@ -1,5 +1,5 @@
 # TODO
 Implémenter: 
-- `huffman.py`
+- `huffman.py` à tester
 - `lzma.py`
 - `lzw.py`
