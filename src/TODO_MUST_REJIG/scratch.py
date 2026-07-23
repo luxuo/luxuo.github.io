@@ -28,17 +28,19 @@ def max_key_log(_, dict):
     return max_key
 
 def min_key_info(str, dict): #  minimum length encoding
-    min = float('-inf') # just needs to be exceeded
+    min = float('inf') # just needs to be exceeded
     min_key = ''
     for key in dict.keys():
         # information encoding + length of key
         # bits required to encode all occurrences + length of key (in bits)
         probability = p_key(str,key,dict)
+        occurrence = probability * len(str)
         information = -math.log2(probability)
         information = 1 if information == 0 else information
-        score =  information / probability + math.log2(len(key) * 8)
-        #score = dict[key] / (information + len(key))
-        if score > min:
+        #score =  information / probability + math.log2(len(key))*len(dict.keys())
+        score =  information * occurrence + math.log2(len(key))*8
+        #score = dict[key] / (information + len(key))111
+        if score < min:
             min = score
             min_key = key
     return min_key
@@ -149,9 +151,9 @@ str = 'tobeornottobeortobeornot'
 #str = 'not' * 8
 #str = 'what\'s up boys! today we will be shooting clay discs'
 #str = 'dcode decodes lzw recodes code lz to code to code to decode'
-str = '111111111110111111'
-#with open('/home/pingu/Documents/ift4055/luxuo.github.io/src/english.txt', 'r') as f:
-#    str = f.read()
+#str = '111111111110111111'
+with open('/home/pingu/Documents/ift4055/luxuo.github.io/src/text_files/english.txt', 'r') as f:
+   str = f.read()
 key_functions = [max_key_log, max_key_sqrt, huffman_key, min_key_info]
 for func in key_functions:
     tree = impasse(str, func)

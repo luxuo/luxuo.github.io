@@ -1,4 +1,19 @@
+exploration d'hypothèse: on interprète la séquence des charactères à compresser
+ comme une aire. le but c'est d'enlever la plus grande aire en utilisant le plus petit périmètre.
+ notre périmètre consiste à être la longeur de la sous-séquence et sa fréquence. si les deux longeurs 
+ avaient un poids égal, on chercherait simplement à trouver le plus grand carré (ou la forme la plus proche de).
+ J'ai essayé avec des avec des poids égaux, et ça n'a pas fonctionné. J'ai ensuite décidé de préserver l'égalité des poids,
+ mais sous un logarithme, càd log(longeur). Pour certains petits exemples, cette piste démontrait des résultats prometteurs,
+ mais sur des textes plus difficiles et long les résultats n'étaient plus prometteurs. 
+ La même chose s'est passé pour les poids sous une racine carré. 
+ J'ai ensuite essayé d'ajuster l'algorithme afin de voir si la sous-séquence ayant la plus courte représentation compressive,
+ (càd son entropie multiplié par son occurrence additionné par sa longeur multiplié par le nombre de charactères uniques) donnait
+ des résultats plus intéressants. Pour la plupart des textes courts, j'avais pas mal les mêmes résultats qu'une compression huffman.
+ L'agorithme fonctionne en genre O(n^4), donc ça crash sur des petits textes.
+ le problème est qu'on ne peut pas utiliser une approche top-down pour la représentation que je souhaite faire.
+ je compare mon algorithme avec celui du codage huffman. 
 
+exploration 2e hypothèse: TODO dynamic programming
 
 organisation des fichiers du projet concret
 
@@ -8,4 +23,4 @@ commence l'hypothèse d'une nouvelle méthode de compression:
  essentiellement, le but c'est de combiner des charactères qui apparaissent souvent 
  ensemble pour former des nouveaux 'charactères' qui ont l'air d'être iid
 
- travail sur l'implémentation des algorithmes de compression classiques
+ travail sur l'implémentation des algorithmes de compression classiques4.383449663884186
