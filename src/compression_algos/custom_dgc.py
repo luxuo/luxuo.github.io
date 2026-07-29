@@ -1,4 +1,4 @@
-def createAncestorDict(s: str):
+def createAncestorDict(s):
     prev_dict = {}
     for i in range(len(s)-1):
         # new key in dict

@@ -23,4 +23,7 @@ commence l'hypothèse d'une nouvelle méthode de compression:
  essentiellement, le but c'est de combiner des charactères qui apparaissent souvent 
  ensemble pour former des nouveaux 'charactères' qui ont l'air d'être iid
 
- travail sur l'implémentation des algorithmes de compression classiques4.383449663884186
+ travail sur l'implémentation des algorithmes de compression classiques
+
+ j'essaie de trouver une façon d'explorer la dérivée de la longeur de compression de chiffres représentés par nncr.
+  ma première idée consiste à utiliser la formule de Newton-Gregory pour approximer la dérivée df(C(0)) = f(C(1)) - f(C(0)).

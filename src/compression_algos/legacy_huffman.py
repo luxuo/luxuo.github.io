@@ -1,22 +1,22 @@
 from collections import Counter
 import heapq
-from ..compressor import Compressor
-# code partiellement adapté de https://www.geeksforgeeks.org/dsa/huffman-coding-in-python/
+from compressor import Compressor
+# code partiellement adapte de https://www.geeksforgeeks.org/dsa/huffman-coding-in-python/
 class Node:
     def __init__(self, symbol='', frequency=0):
         self.symbol = symbol
         self.code = None
-        self.frequency:int = frequency
-        self.zero:Node|None = None
-        self.one:Node|None = None
+        self.frequency = frequency
+        self.zero = None
+        self.one=  None
 
     def __lt__(self, other):
         return self.frequency < other.frequency
 
 class Huffman(Compressor):
-    def create_root(self, counter: Counter[str]) -> None:
+    def create_root(self, counter ):
         # create nodes
-        nodes:list[Node] = []
+        nodes = []
         for key in counter.keys():
             nodes.append(Node(symbol=key, frequency=counter[key]))
         # merge all nodes
@@ -30,13 +30,13 @@ class Huffman(Compressor):
             heapq.heappush(nodes, merged_node)
         self.root = nodes[0]
 
-    def generate_codes(self) -> None:
-        code_dict:dict[str,str] = {}
+    def generate_codes(self):
+        code_dict = {}
         for symbol,code in self.dfs(self.root):
             code_dict[symbol] = code
         self.code_dict = code_dict
 
-    def dfs(self, root:Node|None, code:str = '') -> list[tuple[str,str]]:
+    def dfs(self, root, code):
         if root is None:
             return []
         if root.symbol == '':
@@ -45,7 +45,7 @@ class Huffman(Compressor):
         return [(root.symbol,code)]
         
 
-    def C(self, str:str) -> str:
+    def C(self, str):
         counter = Counter(str)
         self.create_root(counter)
         self.generate_codes()
@@ -55,11 +55,11 @@ class Huffman(Compressor):
 
         return compressed_str
     
-    def D(self, str:str) -> str:
+    def D(self, str):
         if self.root is None:
             raise Exception('No huffman tree. Compress text before decompressing')
         decompressed_str = ''
-        pointer:Node = self.root
+        pointer = self.root
         for c in str:
             if c == '0' and pointer.zero: # zero tree traversal
                 pointer = pointer.zero
