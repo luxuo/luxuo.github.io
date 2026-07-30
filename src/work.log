@@ -30,3 +30,10 @@ commence l'hypothèse d'une nouvelle méthode de compression:
 
 à cause des problèmes d'importation avec les modules de python, j'ai dû faire une petite réorganisation du projet. calisse
 
+je commence à tester la représentation des chiffres naturels. je vérifie la distance entre chaque chiffre adjacent. il n'y a pas tant de lissage entre les chiffres
+ il faudrait que je teste autre chose...
+
+les résultats des distances des nombres naturels sont bruités et intéressants. la distance entre chiffres semble être plus lointaine le plus proche que les chiffres
+ sont à eux. à interpréter... j'aimerai voir si le bruitage des "dérivées" peuvent être utile comme le bruit stochastique dans la descente de gradient. à voir
+
+je recontinue le développement sur l'algorithme de charactère ancètres pour voir si je peux créer un algorithme de compression plus efficace.
