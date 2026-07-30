@@ -44,7 +44,15 @@ def merge_characters(ancestor, prev_dict, prev_dict_index):
             # replace successor's successor's ancestor as ancestor-successor
             successor_successor_index = successor_ancestor_index + len(successor)
              # find successor
-            new_prev_index_dict[][new_prev_index_dict.index()]
+            successor_successor_index_index = -1
+            successor_successor = ''
+            for key,arr in prev_dict_index.items():
+                if successor_successor_index in arr:
+                    successor_successor = key
+                    successor_successor_index_index = prev_dict_index[key].index(successor_successor_index)
+                    break
+            new_prev_index_dict[successor_successor][successor_successor_index_index] = successor_ancestor_index
+            new_prev_dict[successor_successor][successor_successor_index_index] = new_key
 
 
             # update ancestor_index
@@ -86,7 +94,6 @@ def createAncestorDict(s):
             print(prev_index_dict)
             print()
             prev_dict, prev_index_dict = merge_characters(e, prev_dict, prev_index_dict)
-            break
             
     # merge characters
     # repeat till random
