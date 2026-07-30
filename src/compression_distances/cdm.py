@@ -1,5 +1,5 @@
 from compression_algos.compressor import Compressor
-from metric import Metric
+from compression_distances.metric import Metric
 
 # Compression-based dissimilarity measurement citation indirecte https://arxiv.org/pdf/2206.11573
 class CDM(Metric):

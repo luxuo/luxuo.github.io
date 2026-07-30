@@ -1,5 +1,5 @@
 from compression_algos.compressor import Compressor
-from metric import Metric
+from compression_distances.metric import Metric
 
 # Normalized Compression Distance https://arxiv.org/pdf/cs/0111054
 class NCD(Metric):

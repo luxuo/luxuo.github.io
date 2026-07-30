@@ -27,3 +27,6 @@ commence l'hypothèse d'une nouvelle méthode de compression:
 
  j'essaie de trouver une façon d'explorer la dérivée de la longeur de compression de chiffres représentés par nncr.
   ma première idée consiste à utiliser la formule de Newton-Gregory pour approximer la dérivée df(C(0)) = f(C(1)) - f(C(0)).
+
+à cause des problèmes d'importation avec les modules de python, j'ai dû faire une petite réorganisation du projet. calisse
+
