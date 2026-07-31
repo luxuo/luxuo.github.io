@@ -1,10 +1,8 @@
 from collections import Counter
 import math
 
-def merge_characters(ancestor, prev_dict, prev_dict_index):
+def merge_characters(ancestor, prev_dict, prev_dict_index, counter):
     # make disappear the character
-    # search for all occurrences of ancestor
-    # ancestors -len(ancestor)
 
     new_prev_dict = prev_dict.copy()
     new_prev_index_dict = prev_dict_index.copy()
@@ -16,13 +14,18 @@ def merge_characters(ancestor, prev_dict, prev_dict_index):
             # remove ancestor from successor
             # remove ancestor index from successor
             successor_ancestor_index = prev_dict_index[successor].pop(ancestor_index)
-            new_ancestor_index = successor_ancestor_index - len(prev_dict[successor].pop(ancestor_index))
+            successor_ancestor = prev_dict[successor].pop(ancestor_index)
+            # remove ancestor count from counter
+            counter[successor_ancestor] -= 1 # TODO should be ancestor. change it???
+            # remove successor count from counter
+            counter[successor] -= 1
+            new_ancestor_index = successor_ancestor_index - len(successor_ancestor)
             new_ancestor_index_index = prev_dict_index[ancestor].index(new_ancestor_index)
             prev_dict_index[ancestor].pop(new_ancestor_index_index)
             # remove new ancestor from ancestor
             new_ancestor = prev_dict[ancestor].pop(new_ancestor_index_index)
 
-            # cleanup dict if possible TODO NEEDS ANOTHER CHECK FOR CHAR
+            # cleanup dict if possible
             if len(prev_dict[successor]) == 0:
                 del new_prev_dict[successor]
             if len(prev_dict_index[successor]) == 0:
@@ -31,6 +34,10 @@ def merge_characters(ancestor, prev_dict, prev_dict_index):
                 del new_prev_dict[ancestor]
             if len(prev_dict_index[ancestor]) == 0:
                 del new_prev_index_dict[ancestor]
+            if counter[successor_ancestor] <= 0:
+                del counter[successor_ancestor]
+            if counter[successor] <= 0:
+                del counter[successor]
 
             # insert combined ancestor-successor with index
             new_key = ancestor + successor
@@ -38,8 +45,10 @@ def merge_characters(ancestor, prev_dict, prev_dict_index):
             if new_key not in new_prev_dict:
                 new_prev_dict[new_key] = []
                 new_prev_index_dict[new_key] = []
+                counter[new_key] = 0
             new_prev_dict[new_key].append(new_ancestor)
             new_prev_index_dict[new_key].append(new_ancestor_index)
+            counter[new_key] += 1
 
             # replace successor's successor's ancestor as ancestor-successor
             successor_successor_index = successor_ancestor_index + len(successor)
@@ -57,6 +66,7 @@ def merge_characters(ancestor, prev_dict, prev_dict_index):
 
             # update ancestor_index
             ancestor_index = prev_dict[successor].index(ancestor) if ancestor in prev_dict[successor] else -1
+
     return new_prev_dict, new_prev_index_dict
 
 
@@ -90,10 +100,13 @@ def createAncestorDict(s):
     for e in entropy_dict.keys():
         if entropy_dict[e] == 0.0:
             # merge characters
+            print(e)
             print(prev_dict)
             print(prev_index_dict)
             print()
-            prev_dict, prev_index_dict = merge_characters(e, prev_dict, prev_index_dict)
+            prev_dict, prev_index_dict = merge_characters(e, prev_dict, prev_index_dict, counter)
+            break
+        # TODO REPEAT
             
     # merge characters
     # repeat till random
@@ -102,6 +115,7 @@ def createAncestorDict(s):
     return prev_dict, prev_index_dict, counter
 
 p, i, c = createAncestorDict('tobeornottobeortobeornot')
+print('Stap')
 print(p)
 print(i)
 print(c)
