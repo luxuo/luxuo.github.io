@@ -40,3 +40,9 @@ je recontinue le développement sur l'algorithme de charactère ancètres pour v
 
 je rencontre des bogues dans dgc, notamment la façon dont j'ai implmenté les noms des variables qui ont été fucking floues. j'ai réfactorisé les noms de variables
  afin de mieux comprendre ce qui se passe dans mon code. j'ai refactorisé l'algorithme et sa version simplifiée initiale fonctionne.
+
+il faut que je commence la comparaison des modèles d'apprentissage machine. je commence à implémenter les benchmarks. mon premier modèle sera un modèle simple 
+ de classification qui calculera la distance entre le "langage" d'une classe et un point à prédire.
+
+j'ai converti deux jeux de données pour la compatibilité avec la compression, le jeu de données breast_cancer utilise une grande précision, donc je ne vais pas le convertir
+ pour l'instant

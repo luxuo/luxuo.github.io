@@ -1,7 +1,7 @@
 from collections import Counter
 import math
 
-def dgc(s, end_char='<end>'): # TODO MAYBE ADD AN END CHAR????
+def dgc(s, end_char='<end>'):
     chars = [c for c in s]
 
     while True:
@@ -21,17 +21,21 @@ def dgc(s, end_char='<end>'): # TODO MAYBE ADD AN END CHAR????
             counter = Counter(successor_dict[char])
             total = sum(counter.values())
             probabilities = [c / total for c in counter.values()]
+            if counter[end_char] == 1 and len(probabilities) == 1:
+                entropy_dict[char] = float('inf')
+                continue
             entropy = sum([-math.log2(p) * p if p != 0.0 else 0 for p in probabilities])
             entropy_dict[char] = entropy
 
         # TODO get which char to merge or stop
-        ## VERSION 1 : ONLY MERGE CHARS WITH ENTROPY OF 0
+        ## VERSION 1 : ONLY MERGE CHARS WITH ENTROPY OF 0, LONE CHAR EATER
+        counter = Counter(chars)
         stop = True
         for char, H in entropy_dict.items():
-            if H == 0: # MERGE CHAR with next
+            if H == 0 and counter[char] > 1: # MERGE CHAR with next
                 stop = False
                 # get all indices of occurrence
-                indices = [i for i in range(len(chars)-1) if chars[i] == char] # TODO TO ALTER IF ADDED END CHAR
+                indices = [i for i in range(len(chars)-1) if chars[i] == char]
                 print(chars)
                 # rebuild array with merged chars
                 new_chars = chars[0:indices[0]]
@@ -52,4 +56,4 @@ def dgc(s, end_char='<end>'): # TODO MAYBE ADD AN END CHAR????
             return chars
 
 
-print(dgc('code to code to decode to code'))
+print(dgc('code to code to decode to code to recode and seecode'))
