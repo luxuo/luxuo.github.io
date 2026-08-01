@@ -52,10 +52,4 @@ def dgc(s, end_char='<end>'): # TODO MAYBE ADD AN END CHAR????
             return chars
 
 
-
-# p, i, c = createAncestorDict('tobeornottobeortobeornot')
-# print('Stap')
-# print(p)
-# print(i)
-# print(c)
-print(dgc('tobeornottobeortobeornot'))
+print(dgc('code to code to decode to code'))
