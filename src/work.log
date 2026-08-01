@@ -37,3 +37,6 @@ les résultats des distances des nombres naturels sont bruités et intéressants
  sont à eux. à interpréter... j'aimerai voir si le bruitage des "dérivées" peuvent être utile comme le bruit stochastique dans la descente de gradient. à voir
 
 je recontinue le développement sur l'algorithme de charactère ancètres pour voir si je peux créer un algorithme de compression plus efficace.
+
+je rencontre des bogues dans dgc, notamment la façon dont j'ai implmenté les noms des variables qui ont été fucking floues. j'ai réfactorisé les noms de variables
+ afin de mieux comprendre ce qui se passe dans mon code. j'ai refactorisé l'algorithme et sa version simplifiée initiale fonctionne.
