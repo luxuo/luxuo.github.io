@@ -9,5 +9,5 @@ class Compressor(ABC):
         pass
 
     @abstractmethod
-    def C_len(self, str:str) -> int:
+    def C_len(self, str:str) -> float:
         pass

@@ -28,13 +28,14 @@ class LZW(Compressor):
         # last char
         output.append(char_dict[p])
         self.output = output
-        print(output)
         return ''.join([chr(o) for o in output])
 
     def D(self, str:str) -> str:
 
         return ''
 
-    def C_len(self, str):
+    def C_len(self, str:str) -> float:
+        if len(str) == 0:
+            return 0.0
         self.C(str)
         return math.ceil(math.log2(max(self.output))) * len(self.output)

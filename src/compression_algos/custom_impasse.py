@@ -151,3 +151,5 @@ class Impasse(Compressor):
         return compress(str, impasse(str))
     def D(str):
         raise Exception('Not implemented')
+    def C_len(self, str):
+        return super().C_len(str)
