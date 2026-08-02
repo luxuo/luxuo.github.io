@@ -4,3 +4,6 @@ class Metric(ABC):
     @abstractmethod
     def dist(self, C: Compressor, x: str, y: str) -> float:
         pass
+    @abstractmethod
+    def d(self, C: Compressor, x: str, y: str) -> float:
+        pass
