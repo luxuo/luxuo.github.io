@@ -46,3 +46,13 @@ il faut que je commence la comparaison des modèles d'apprentissage machine. je 
 
 j'ai converti deux jeux de données pour la compatibilité avec la compression, le jeu de données breast_cancer utilise une grande précision, donc je ne vais pas le convertir
  pour l'instant
+
+j'ai effectué du travail refactorisant le code pour une meilleure réutilisabilité. lzw a été implémentée (et partiellement testée) dans le contexte de son besoin.
+
+j'expérimente avec de nouvelles 'distances' de compression pour explorer la fonction de représentation numérique. je me rend compte que la représentation nncr
+ n'est pas idéale. tout veut se converger vers 0. ce qui fait intuitivement u sens, la multiplication de 1 est plus basse le plus bas notre chiffre. ceci fait
+ qu'avec notre compression, il y a moins d'information à compresser avec des valeurs plus petites. je vais essayer une représentation 'progress bar' pour voir si la
+ représentation résoud le problème de convergence vers 0.
+
+avec une fonction de compression lz78 qui calcule le pire cas en "représentation nncr", je valide mon observation précédente que tout veut se converger vers 0
+ avec une représentation nncr.

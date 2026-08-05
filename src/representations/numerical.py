@@ -9,3 +9,6 @@ def nncr(num: int, one:str ='1', zero: str ='0'):
 def bdncr(num: float, precision_expo:int, one:str = '1', zero: str='0'):
     num_int = int(num * 10 ** precision_expo)
     return nncr(num=num_int, one=one, zero=zero)
+
+def progress_bar(num: int, max:int=100, one:str='1', zero:str='0'):
+    return num * one + (max-num) * zero
