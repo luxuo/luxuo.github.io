@@ -12,7 +12,7 @@ class TestNaturalNumberCompressionRepresentationImpasse(unittest.TestCase):
 
     def __init__(self, methodName = "runTest"):
         self.METRIC = CDM()
-        self.COMPRESSOR = Impasse
+        self.COMPRESSOR = LZ78_WORST_CASE
         super().__init__(methodName)
         
     def test_functionnality(self):
@@ -21,9 +21,9 @@ class TestNaturalNumberCompressionRepresentationImpasse(unittest.TestCase):
         self.assertEqual(len(nncr(0)), 0)
 
     def test_different_compression_length(self):
-        self.assertLess(self.METRIC.dist(self.COMPRESSOR, nncr(3), nncr(4), break_string=True), self.METRIC.dist(self.COMPRESSOR, nncr(3), nncr(50), break_string=True))
-        #self.assertLess(METRIC.dist(COMPRESSOR, nncr(5), nncr(5), break_string=True), METRIC.dist(COMPRESSOR, nncr(4), nncr(-14), break_string=True))
-        #self.assertLess(METRIC.dist(COMPRESSOR, nncr(3), nncr(4), break_string=True), METRIC.dist(COMPRESSOR, nncr(3), nncr(5), break_string=True))
+        self.assertLess(self.METRIC.dist(self.COMPRESSOR, nncr(3), nncr(4), break_string=True), self.METRIC.dist(self.COMPRESSOR, '3', '13', break_string=True))
+        self.assertLess(self.METRIC.dist(self.COMPRESSOR, nncr(4), nncr(8), break_string=True), self.METRIC.dist(self.COMPRESSOR, '300', '-118', break_string=True))
+        self.assertLess(self.METRIC.dist(self.COMPRESSOR, nncr(15), nncr(20), break_string=True), self.METRIC.dist(self.COMPRESSOR, '10', '16', break_string=True))
         
 
     def test_compression_deltas(self):
@@ -65,6 +65,7 @@ class TestNaturalNumberCompressionRepresentationLZW(unittest.TestCase):
         self.REPRESENTATION = progress_bar
         self.algo = 'LZW'
         self.metric = 'UNPROVEN_CD'
+        self.representation = 'progress_bar'
         super().__init__(methodName)
         
     def test_compression_deltas(self):
@@ -77,10 +78,10 @@ class TestNaturalNumberCompressionRepresentationLZW(unittest.TestCase):
         ax.plot(x, deltas)
 
         ax.set(xlabel='Valeur', ylabel='Delta prochaine valeur',
-        title='Deltas nncr, {algo}, {metric}'.format(algo=self.algo, metric = self.metric))
+        title='Deltas nncr, {algo}, {metric}, {representation}'.format(algo=self.algo, metric = self.metric,representation=self.representation))
         ax.grid()
 
-        fig.savefig("./tests/plots/{algo}_{metric}_compression_deltas.png".format(algo=self.algo,metric=self.metric))
+        fig.savefig("./tests/plots/{algo}_{metric}_{representation}_compression_deltas.png".format(algo=self.algo,metric=self.metric,representation=self.representation))
 
     def test_compression_distances(self):
             for number in [1,50,100]:
@@ -93,10 +94,10 @@ class TestNaturalNumberCompressionRepresentationLZW(unittest.TestCase):
                 ax.plot(x, deltas)
 
                 ax.set(xlabel='Chiffre', ylabel='Distance de ' + str(number),
-                title='D( x, ' + str(number) + '): {algo}, {metric}'.format(algo=self.algo,metric=self.metric))
+                title='D( x, ' + str(number) + '): {algo}, {metric}, {representation}'.format(algo=self.algo,metric=self.metric,representation=self.representation))
                 ax.grid()
 
-                fig.savefig("./tests/plots/{algo}_{metric}_compression_distance_to".format(algo=self.algo,metric=self.metric) + str(number) + ".png")
+                fig.savefig("./tests/plots/{algo}_{metric}_{representation}_compression_distance_to".format(algo=self.algo,metric=self.metric,representation=self.representation) + str(number) + ".png")
 
 
 class TestNaturalNumberCompressionRepresentationLZ78_WORST_CASE(unittest.TestCase):
