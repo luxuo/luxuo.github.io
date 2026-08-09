@@ -1,7 +1,3 @@
-# TODO
-Créer/trouver d'autres distances
-- `custom distance.py`
-
 b(x)(log(b(x)))
 
 x+o = c
