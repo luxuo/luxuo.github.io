@@ -6,29 +6,32 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, classification_report
 from .convert_datasets import nncr_information_compression_transformation, nncr_create_dict
 
-X, y = load_wine(return_X_y=True)
+X, y = load_iris(return_X_y=True)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=43)
 
+print('Creating dictionnary...')
 compress_transform_dict = nncr_create_dict(X_train)
+print('Transforming training X...')
 X1_train = nncr_information_compression_transformation(X_train, compress_transform_dict)
+print('Transforming testing X...')
 X1_test = nncr_information_compression_transformation(X_test, compress_transform_dict)
 
-
+print('Running...')
 # Classification par régression logistique
 model = LogisticRegression(max_iter=1000)
 model.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)
 
-print("Classical Accuracy:", accuracy_score(y_test, y_pred))
+print("Classical Accuracy Logistic Regression:", accuracy_score(y_test, y_pred))
 print(classification_report(y_test, y_pred))
 
 model.fit(X1_train, y_train)
 
 y_pred = model.predict(X1_test)
 
-print("Compressed Accuracy:", accuracy_score(y_test, y_pred))
+print("Compressed Accuracy Logistic Regression:", accuracy_score(y_test, y_pred))
 print(classification_report(y_test, y_pred))
 
 

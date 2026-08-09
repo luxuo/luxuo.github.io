@@ -86,8 +86,10 @@ def largest_val(arr, val):
             return i - 1
     return len(arr)-1
 
-def nncr_information_compression_transformation(X, values_dict):
+def nncr_information_compression_transformation(X, values_dict, tolerance=1e2):
     X = X.copy()
+    X = X * tolerance
+    X = X.astype(int)
     # create features dictionnary
     #values_dict = nncr_create_dict(X)
     # create new matrix

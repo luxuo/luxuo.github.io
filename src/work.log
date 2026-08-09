@@ -56,3 +56,22 @@ j'expérimente avec de nouvelles 'distances' de compression pour explorer la fon
 
 avec une fonction de compression lz78 qui calcule le pire cas en "représentation nncr", je valide mon observation précédente que tout veut se converger vers 0
  avec une représentation nncr.
+
+Alors, avec les tailles toutes seules (nncr). on ne peut pas sortir de l'information utile en représentant les chiffres seuls comme des longeurs pire cas ou de
+ répétitions du même charactère. pour une utilisation paramétrée. on peut potentiellement l'utiliser comme fonction de perte (vu la convergence vers 0), mais la
+ complexité de sortir les informations dérivées de chaque paramètre risque d'excéder une difficulté utile pour notre cas d'apprentissage machine.
+
+idée finale: il faut utiliser les algorithmes de compression dans le but de la vision initiale. la vision initiale impliquait le rasoir d'ockham. j'ai besoin
+ d'une technique qui réduit le plus possible les paramètres d'un modèle. les modèles non-paramétrés sont cool, mais ont besoin des données pour classifier/régresser.
+ Je propose un modèle (une version rudimentaire) qui paramétrise tout les éléments du dictionnaire de compression et garde comme valeur le compte de chaque élément du 
+ dictionnaire. déjà par intuition, l'algorithme lzw aura de la difficulté à compresser (avec représentation nncr) les données de manière cohérente (potentiellement faire du surapprentissage).
+ aussi, avec peu de données, le nombre de paramètres du dictionnaire risque d'être beaucoup plus que le nombre de paramètres initial. la transformation de données ne prends pas en compte 
+ l'ordonnance des éléments du dictionnaire dans la compression, ce qui risque de perdre de l'information utile.
+en gros, ce n'est pas une nouvelle opération d'apprentissage machine, mais plutôt une transformation des données par les algorithmes de compression. cette transformation permettra d'utiliser
+ tous les algorithmes d'apprentissage machine déjà existants, simplifiant l'implémentation (en théorie si tout fonctionne).
+
+il est maintenant temps d'implémenter ceci. je vais implémenter une transformation de données en nncr pour voir si la régression fonctionne.
+
+je me rends compte que l'architecture que je crée est similaire à BoW.
+
+pour l'instant, la conversion semble fonctionner. par contre, il faut introduire des tolérances pour que le script ne prenne pas toujours pour finir
