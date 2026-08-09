@@ -4,24 +4,39 @@ from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_wine, load_iris, load_breast_cancer
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, classification_report
-
+from .convert_datasets import nncr_information_compression_transformation, nncr_create_dict
 
 X, y = load_wine(return_X_y=True)
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=43)
+
+compress_transform_dict = nncr_create_dict(X_train)
+X1_train = nncr_information_compression_transformation(X_train, compress_transform_dict)
+X1_test = nncr_information_compression_transformation(X_test, compress_transform_dict)
+
 
 # Classification par régression logistique
 model = LogisticRegression(max_iter=1000)
 model.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)
-#print("Accuracy:", accuracy_score(y_test, y_pred))
-#print(classification_report(y_test, y_pred))
+
+print("Classical Accuracy:", accuracy_score(y_test, y_pred))
+print(classification_report(y_test, y_pred))
+
+model.fit(X1_train, y_train)
+
+y_pred = model.predict(X1_test)
+
+print("Compressed Accuracy:", accuracy_score(y_test, y_pred))
+print(classification_report(y_test, y_pred))
+
+
+
 
 # Classification par K-PPV
-knn = KNeighborsClassifier(n_neighbors=3)
-knn.fit(X_train, y_train)
-y_pred_knn = knn.predict(X_test)
+# knn = KNeighborsClassifier(n_neighbors=3)
+# knn.fit(X_train, y_train)
+# y_pred_knn = knn.predict(X_test)
 #print("Accuracy:", accuracy_score(y_test, y_pred_knn))
 #print(classification_report(y_test, y_pred_knn))
-
-print(X_train.shape)
