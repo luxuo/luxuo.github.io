@@ -12,21 +12,20 @@ Temps total: 150 heures
 
 ## Étape 2: application des connaissances/ test d'hypothèses (60h)
 
-    Planification, horaire détaillé, objectifs, et limites : 2h
-    Application et test d'hypothèses : 58h
+    Planification, horaire détaillé, objectifs, et limites : 2h (ignoré)
+    Application et test d'hypothèses : 58h + 20h (complété)
 
 
 ## Étape 3: analyse et réflexion (20h)
 
-    Formatages des tests d'hypothèse en données analysables : 8h
-    Analyse et réflexion : 8h
-    Préparation de la synthèse pour le rapport : 4h
+    Formatages des tests d'hypothèse en données analysables : 8h (ignoré)
+    Analyse et réflexion : 8h (ignoré)
+    Préparation de la synthèse pour le rapport : 4h (ignoré)
 
 
 ## Étape 4: rapport et présentation (10h)
 
-    Rédaction du rapport : 7h
-    Préparation présentation : 3h
+    En rédaction
     
 ---
 
@@ -132,6 +131,4 @@ TODO Peut-être à ne pas lire... Une méthode très intéressante à étudier, 
 
 ## Application des hypothèses
 
-### Idées à développer
-* Notion de séquence
-* Développement de "Preuves": Essayer de prouver qu'enlever le plus gros "carré" d'une séquence est optimal pour la compression, prouver que le carré est optimal 
+Voir ./src/work.log
