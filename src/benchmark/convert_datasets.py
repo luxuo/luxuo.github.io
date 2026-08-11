@@ -38,7 +38,16 @@ def load_compress_breast_cancer(stop_char='*'):
     # print(new_X)
     # return new_X, y
 
-def nncr_create_dict(X, max_precision=1e-1):
+def adjust_tolerance(X, tolerance=1e2, tolerances=None):
+    if tolerances is None:
+        return (X.copy() * tolerance).astype(int)
+    X = X.copy()
+    for i,tol in zip(range(len(tolerances)), tolerances):
+        X[:,i] * tol
+    return X.astype(int)
+
+def nncr_create_dict(X, tolerance=1e2, tolerances=None):
+    X = adjust_tolerance(X, tolerance=tolerance, tolerances=tolerances)
     values_dict = {}
     j = 0
     # foreach col
@@ -47,13 +56,13 @@ def nncr_create_dict(X, max_precision=1e-1):
         arr = np.sort(col)
         while np.count_nonzero(arr) > 0: # while there is still area to be removed
             # get sum
-            total = sum(arr)
+            total = float(sum(arr))
             # minimal information
             min_info = float('inf')
             min_index = -1
             for i in range(len(arr)): # foreach element in sorted column
                 # calculate information
-                area = arr[i] * (len(arr)-i)
+                area = float(arr[i]) * (len(arr)-i)
                 p = area / total
                 information = -math.log2(p) if p != 0.0 else float('inf')
                 if information < min_info: # replace minimal information
@@ -86,11 +95,8 @@ def largest_val(arr, val):
             return i - 1
     return len(arr)-1
 
-def nncr_information_compression_transformation(X, values_dict, tolerance=1e2):
-    X = X.copy()
-    X = X * tolerance
-    X = X.astype(int)
-    # create features dictionnary
+def nncr_information_compression_transformation(X, values_dict, tolerance=1e2, tolerances=None):
+    X = adjust_tolerance(X,tolerance=tolerance,tolerances=tolerances)
     #values_dict = nncr_create_dict(X)
     # create new matrix
     features_len = 0
