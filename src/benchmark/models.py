@@ -7,6 +7,7 @@ from sklearn.metrics import accuracy_score, classification_report, mean_squared_
 from .convert_datasets import nncr_information_compression_transformation, nncr_create_dict
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 def classificationTest():
     X, y = load_wine(return_X_y=True)
 
@@ -73,32 +74,54 @@ def regression_test():
             print(model_name, 'Compress MSE:', mean_squared_error(y_test,y1_pred))
 
 def custom_regression_test():
-    np.random.seed(12)
-    num = 75
+    SEED = 140
+    np.random.seed(SEED)
+    num = 250
     max_val = 100
-    noise_val = 25
+    noise_val = 5
     noise = np.random.rand(num,1) * noise_val
-    X = np.random.rand(num,1) * max_val #np.linspace(0,100,num=num,endpoint=True)
+    X = np.random.rand(num,1) * max_val
     b = 5
-    m = 2
-    y = np.array([((X[i]-30.0)**2)/-35.0 + X[i] + noise[i] for i in range(len(X))])#np.array([X[i]*m + b + noise[i] for i in range(len(X))])
-    plt.scatter(X,y, label='y_true')
+    m = 10
+    quadratic_func = np.array([((X[i]-30.0)**2)/-35.0 + X[i] + noise[i] for i in range(len(X))])
+    linear_func = np.array([X[i]*m + b + noise[i] for i in range(len(X))])
+    moe_linear_func = np.array([X[i]*m + b + noise[i] if X[i] < 50 else 105 + noise[i] for i in range(len(X))])
+    sin_func = np.array([math.sin(X[i] * math.pi / 15)*m + 2*m + noise[i] for i in range(len(X))])
+    log_func = np.array([math.log(X[i]) + noise[i] for i in range(len(X))])
+    y = sin_func
+    
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=SEED)
+
+    plt.scatter(X_train,y_train, label='y_train', c='blue')
+    plt.scatter(X_test,y_test, label='y_test', c='orange')
 
     model = LinearRegression()
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=50)
+
+    # Default regression prediction
     model.fit(X_train,y_train)
-
+    # whole line prediction
     pred_x_plot = np.array([[i] for i in range(1,max_val)])
-
     y_pred = model.predict(pred_x_plot)
-    plt.plot(pred_x_plot,y_pred, color='orange', label='pred_reg')
+    plt.plot(pred_x_plot,y_pred, color='green', label='pred_reg (train)', alpha=0.5)
+    # Dataset MSE
+    print('Default MSE train set:', mean_squared_error(y_train,model.predict(X_train)))
+    print('Default MSE test set:', mean_squared_error(y_test,model.predict(X_test)))
+    
 
+    # Compress regression prediction
     compress_dict = nncr_create_dict(X_train)
     X1_train = nncr_information_compression_transformation(X_train,compress_dict)
-    pred_x1_plot = nncr_information_compression_transformation(pred_x_plot,compress_dict)
     model.fit(X1_train,y_train)
+    # whole line prediction
+    pred_x1_plot = nncr_information_compression_transformation(pred_x_plot,compress_dict)
     y1_pred = model.predict(pred_x1_plot)
-    plt.plot(pred_x_plot,y1_pred, color='red', label='pred_comp_reg')
+    plt.plot(pred_x_plot,y1_pred, color='red', label='pred_comp_reg (train)', alpha=0.5)
+
+    # Dataset MSE
+    X1_test = nncr_information_compression_transformation(X_test, compress_dict)
+    print('Compress MSE train set:', mean_squared_error(y_train,model.predict(X1_train)))
+    print('Compress MSE test set:', mean_squared_error(y_test,model.predict(X1_test)))
 
 
 
