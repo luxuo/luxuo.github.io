@@ -133,4 +133,4 @@ TODO Peut-être à ne pas lire... Une méthode très intéressante à étudier, 
 
 ## Application des hypothèses
 
-Voir ./src/work.log
+[Voir ./src/work.log](./src/work.log)
