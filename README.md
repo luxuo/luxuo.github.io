@@ -123,8 +123,10 @@ TODO Peut-être à ne pas lire... Une méthode très intéressante à étudier, 
 #### [Nonapproximability of the normalized information distance](https://homepages.cwi.nl/~paulv/papers/nid.pdf)
     Définit: NID = E(x,y)/max{K(x),K(y)}
     Prouve que NID n'est ni lower semicomputable, ni upper semi computable
+
 #### [How Incomputable Is Kolmogorov Complexity?](https://homepages.cwi.nl/~paulv/papers/incomp.pdf)
     Article d'introduction à la complexité de kolmogorov, prouve K(x) incalculable (on le sait déjà), fait référence à un autre article qui approxime la complexité de kolmogorov avec des listes quadratiques (à lire cet article).
+    
 #### [A Brief on Short Descriptions](https://dl.acm.org/doi/epdf/10.1145/2902945.2902957)
 à lire svp....
 
