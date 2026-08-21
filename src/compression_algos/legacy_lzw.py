@@ -2,10 +2,10 @@ from .compressor import Compressor
 import math
 
 class LZW(Compressor):
-    def C(self, str:str) -> str:
+    def C(self, x:str) -> str:
         # init dictionnary, not exaclty lzw loyal, but that's what it's gonna be
         char_dict = {}
-        for c in str:
+        for c in x:
             if c not in char_dict:
                 char_dict[c] = ord(c)
         self.char_dict = char_dict
@@ -13,9 +13,9 @@ class LZW(Compressor):
         # 
         output = []
         new_order = max(char_dict.values()) + 1 # 256
-        p = str[0]
-        for i in range(1,len(str)):
-            c = str[i]
+        p = x[0]
+        for i in range(1,len(x)):
+            c = x[i]
             if p + c in char_dict:
                 p = p + c
             else:
@@ -30,12 +30,12 @@ class LZW(Compressor):
         self.output = output
         return ''.join([chr(o) for o in output])
 
-    def D(self, str:str) -> str:
+    def D(self, x:str) -> str:
 
         return ''
 
-    def C_len(self, str:str) -> float:
-        if len(str) == 0:
+    def C_len(self, x:str) -> float:
+        if len(x) == 0:
             return 0.0
-        self.C(str)
+        self.C(x)
         return math.ceil(math.log2(max(self.output))) * len(self.output)

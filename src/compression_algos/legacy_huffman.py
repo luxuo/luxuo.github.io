@@ -45,36 +45,36 @@ class Huffman(Compressor):
         return [(root.symbol,code)]
         
 
-    def C(self, str):
-        counter = Counter(str)
+    def C(self, x):
+        counter = Counter(x)
         self.create_root(counter)
         self.generate_codes()
-        compressed_str = ''
-        for c in str:
-            compressed_str = compressed_str + self.code_dict[c]
+        compressed_x = ''
+        for c in x:
+            compressed_x = compressed_x + self.code_dict[c]
 
-        return compressed_str
+        return compressed_x
     
-    def D(self, str):
+    def D(self, x):
         if self.root is None:
             raise Exception('No huffman tree. Compress text before decompressing')
-        decompressed_str = ''
+        decompressed_x = ''
         pointer = self.root
-        for c in str:
+        for c in x:
             if c == '0' and pointer.zero: # zero tree traversal
                 pointer = pointer.zero
                 if pointer.symbol != '': # leaf node
-                    # concat decompressed string
-                    decompressed_str = decompressed_str + pointer.symbol
+                    # concat decompressed xing
+                    decompressed_x = decompressed_x + pointer.symbol
                     # reset pointer
                     pointer = self.root
             elif c == '1' and pointer.one: # one tree traversal
                 pointer = pointer.one
                 if pointer.symbol != '': # leaf node
-                    # concat decompressed string
-                    decompressed_str = decompressed_str + pointer.symbol
+                    # concat decompressed xing
+                    decompressed_x = decompressed_x + pointer.symbol
                     # reset pointer
                     pointer = self.root
             else:
                 raise Exception('Tree issue or invalid compressed text')
-        return decompressed_str
+        return decompressed_x

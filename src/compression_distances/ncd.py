@@ -13,4 +13,4 @@ class NCD(Metric):
         cx = C.C_len(x)
         cy = C.C_len(y)
         cxy = C.C_len(x+y) if not break_string else C.C_len(x+break_char+y)
-        return float(cxy - min( cx, cy)) / max(cx, cy)
+        return float(cxy - min( cx, cy)) / max(cx, cy,1)

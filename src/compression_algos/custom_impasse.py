@@ -147,9 +147,9 @@ def calculate_key_entropy(str, keys, replace_char='*'):
 
 
 class Impasse(Compressor):
-    def C(str):
-        return compress(str, impasse(str))
-    def D(str):
+    def C(self, x):
+        return compress(x, impasse(x))
+    def D(self, x):
         raise Exception('Not implemented')
-    def C_len(self, str):
-        return super().C_len(str)
+    def C_len(self, x):
+        return len(self.C(x))

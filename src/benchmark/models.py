@@ -1,4 +1,5 @@
 ## tiré de geeks for geeks https://www.geeksforgeeks.org/machine-learning/comprehensive-guide-to-classification-models-in-scikit-learn/
+## modifié quand même assez fortement.
 from sklearn.linear_model import LogisticRegression, LinearRegression, Ridge
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_wine, load_iris, load_breast_cancer, fetch_california_housing, load_diabetes
@@ -8,19 +9,19 @@ from .convert_datasets import nncr_information_compression_transformation, nncr_
 import matplotlib.pyplot as plt
 import numpy as np
 import math
-def classificationTest():
+
+def classification_test():
     X, y = load_wine(return_X_y=True)
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5, random_state=47)
 
-    print('Creating dictionnary...')
+    
     compress_transform_dict = nncr_create_dict(X_train)
-    print('Transforming training X...')
+    
     X1_train = nncr_information_compression_transformation(X_train, compress_transform_dict)
-    print('Transforming testing X...')
+    
     X1_test = nncr_information_compression_transformation(X_test, compress_transform_dict)
 
-    print('Running...')
     # Classification par régression logistique
     model = LogisticRegression(max_iter=10000)
     model.fit(X_train, y_train)
@@ -74,13 +75,14 @@ def regression_test():
             print(model_name, 'Compress MSE:', mean_squared_error(y_test,y1_pred))
 
 def custom_regression_test():
-    SEED = 140
+    SEED = 1411
     np.random.seed(SEED)
-    num = 250
-    max_val = 100
+    num = 1000
+    max_val = 150
     noise_val = 5
+    x_offset = 12
     noise = np.random.rand(num,1) * noise_val
-    X = np.random.rand(num,1) * max_val
+    X = np.random.rand(num,1) * max_val + x_offset
     b = 5
     m = 10
     quadratic_func = np.array([((X[i]-30.0)**2)/-35.0 + X[i] + noise[i] for i in range(len(X))])
@@ -96,12 +98,13 @@ def custom_regression_test():
     plt.scatter(X_train,y_train, label='y_train', c='blue')
     plt.scatter(X_test,y_test, label='y_test', c='orange')
 
-    model = LinearRegression()
+    model = Ridge(alpha=100)#LinearRegression()
 
     # Default regression prediction
     model.fit(X_train,y_train)
     # whole line prediction
-    pred_x_plot = np.array([[i] for i in range(1,max_val)])
+    step_size = 0.5
+    pred_x_plot = np.array([[i * step_size] for i in range(int(x_offset / step_size), int((max_val + x_offset) / step_size))])
     y_pred = model.predict(pred_x_plot)
     plt.plot(pred_x_plot,y_pred, color='green', label='pred_reg (train)', alpha=0.5)
     # Dataset MSE
@@ -127,6 +130,3 @@ def custom_regression_test():
 
     plt.legend(loc='best')
     plt.show()
-
-#regression_test()
-custom_regression_test()

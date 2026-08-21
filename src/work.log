@@ -75,3 +75,5 @@ il est maintenant temps d'implémenter ceci. je vais implémenter une transforma
 je me rends compte que l'architecture que je crée est similaire à BoW.
 
 pour l'instant, la conversion semble fonctionner. par contre, il faut introduire des tolérances pour que le script ne prenne pas toujours pour finir
+
+todo absolute reduction (allowing for negative numbers in BoW), n^n 
