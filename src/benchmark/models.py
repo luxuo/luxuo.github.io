@@ -29,6 +29,7 @@ def classification_test():
     y_pred = model.predict(X_test)
 
     print("Classical Accuracy Logistic Regression:", accuracy_score(y_test, y_pred))
+    print('Shape transformation: ',X_train.shape,'->',X1_train.shape)
     print(classification_report(y_test, y_pred))
 
     model.fit(X1_train, y_train)
@@ -72,7 +73,9 @@ def regression_test():
             # Compress Model
             model.fit(X1_train, y_train)
             y1_pred = model.predict(X1_test)
+            print('Shape transformation: ',X_train.shape,'->',X1_train.shape)
             print(model_name, 'Compress MSE:', mean_squared_error(y_test,y1_pred))
+            print()
 
 def custom_regression_test():
     SEED = 1411
@@ -123,6 +126,7 @@ def custom_regression_test():
 
     # Dataset MSE
     X1_test = nncr_information_compression_transformation(X_test, compress_dict)
+    print('Shape transformation: ',X_train.shape,'->',X1_train.shape)
     print('Compress MSE train set:', mean_squared_error(y_train,model.predict(X1_train)))
     print('Compress MSE test set:', mean_squared_error(y_test,model.predict(X1_test)))
 
